@@ -1,0 +1,4 @@
+package_mirror: "http://{{ mirror_fqdn }}/{{ ansible_distribution | lower }}"
+epel_mirror: "http://{{ mirror_fqdn }}/epel"
+redhat_repositories:
+  - rhel-7-server-rpms

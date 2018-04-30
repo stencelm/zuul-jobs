@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+{%- for repository in redhat_repositories %}
+[{{ repository }}]
+name={{ repository | replace('-',' ') | title }}
+baseurl={{ package_mirror }}/{{ repository }}
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+
+{% endfor %}

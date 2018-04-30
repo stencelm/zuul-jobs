@@ -1,0 +1,29 @@
+- name: Install RedHat mirror repository files
+  become: yes
+  template:
+    dest: "/{{ item }}"
+    group: root
+    mode: 0644
+    owner:  root
+    src: "{{ item }}.j2"
+  with_items:
+    - etc/yum.repos.d/redhat-mirror.repo
+    - etc/yum.repos.d/epel.repo
+  notify:
+    - Update yum cache
+
+- name: Disable subscription-manager repository management
+  command: subscription-manager config --rhsm.manage_repos=0
+  become: yes
+
+# http://dnf.readthedocs.io/en/latest/conf_ref.html#options-for-both-main-and-repo
+# deltarpm is useful when the bottleneck is the network throughput.
+# It also requires additional drpm packages to be hosted by the mirrors which
+# is not done by default.
+- name: Disable deltrarpm
+  become: yes
+  ini_file:
+    path: /etc/yum.conf
+    section: main
+    option: deltarpm
+    value: 0
