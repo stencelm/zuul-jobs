@@ -1,3 +1,5 @@
+---
+
 - name: Create Temp SSH key
   command: ssh-keygen -t rsa -b 1024 -N '' -f {{ zuul_temp_ssh_key }}
   delegate_to: localhost
@@ -41,3 +43,4 @@
 
 - name: Verify we can still SSH to all nodes
   ping:
+

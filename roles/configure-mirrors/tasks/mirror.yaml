@@ -1,3 +1,5 @@
+---
+
 - name: Install /etc/pip.conf configuration
   become: yes
   template:
@@ -27,3 +29,4 @@
     - "mirror/{{ ansible_distribution }}.yaml"
     - "mirror/{{ ansible_os_family }}.yaml"
     - "mirror/default.yaml"
+

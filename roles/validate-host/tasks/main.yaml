@@ -1,3 +1,5 @@
+---
+
 - name: Define zuul_info_dir fact
   set_fact:
     zuul_info_dir: "{{ zuul.executor.log_root }}/zuul-info"
@@ -37,3 +39,4 @@
   copy:
     src: "{{ inventory_file }}"
     dest: "{{ zuul_info_dir }}"
+
