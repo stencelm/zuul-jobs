@@ -1,3 +1,5 @@
+---
+
 # The apt module can not be used for this since it installs python-apt
 # which can not work until this command fixes the cache.
 - name: Update apt cache
@@ -27,3 +29,4 @@
   with_items:
     - zypper clean
     - zypper refresh
+

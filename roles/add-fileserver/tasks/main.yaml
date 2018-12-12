@@ -1,3 +1,5 @@
+---
+
 - name: Create SSH private key tempfile
   tempfile:
     state: file
@@ -25,3 +27,4 @@
   known_hosts:
     name: "{{ fileserver.fqdn }}"
     key: "{{ fileserver.ssh_known_hosts }}"
+
