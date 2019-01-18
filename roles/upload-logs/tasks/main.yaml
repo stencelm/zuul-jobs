@@ -15,9 +15,10 @@
   delegate_to: localhost
   file:
     path: "{{ zuul.executor.log_root }}/"
-    mode: u=rwX,g=rX,o=rX
+    mode: u=rwX,g=rwX,o=rX
     state: directory
     recurse: yes
+  become: yes
 
 - name: Upload logs to log server
   synchronize:
