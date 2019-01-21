@@ -1,3 +1,4 @@
+---
 - name: Set log path for a change
   when: zuul.change is defined
   set_fact:
