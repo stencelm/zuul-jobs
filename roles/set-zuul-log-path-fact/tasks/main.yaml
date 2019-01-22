@@ -18,3 +18,8 @@
   when: zuul.change is not defined and zuul.newrev is not defined and build_number is defined
   set_fact:
     zuul_log_path: "{{ zuul.pipeline }}/{{ zuul.project.canonical_hostname }}/{{ zuul.branch }}/{{ build_number }}/{{ zuul.job }}"
+
+- name: Set log path for a post-merge job
+  when: 'zuul.pipeline == "post-merge"'
+  set_fact:
+    zuul_log_path: "{{ zuul.pipeline }}/{{ zuul.project }}/{{ zuul.job }}/{{ zuul.build[:7] }}"
