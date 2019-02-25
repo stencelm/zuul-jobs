@@ -22,4 +22,4 @@
 - name: Set log path for a post-merge job
   when: 'zuul.pipeline == "post-merge"'
   set_fact:
-    zuul_log_path: "{{ zuul.pipeline }}/{{ zuul.project }}/{{ zuul.job }}/{{ zuul.build[:7] }}"
+    zuul_log_path: "{{ zuul.pipeline }}/{{ zuul.project.canonical_hostname }}/{{ zuul.job }}/{{ zuul.build[:7] }}"
