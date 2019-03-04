@@ -3,11 +3,11 @@
     name: receive.denyCurrentBranch ignore
     value: ignore
     scope: local
-    repo: "{{ ansible_user_dir }}/{{ item.src_dir}}"
+    repo: "{{ ansible_user_dir }}/{{ item.src_dir }}"
   with_items: "{{ zuul.projects }}"
 
 - name: Synchronize src repos to workspace directory
-  command: "git push --mirror git+ssh://{{ ansible_user }}@{{ ansible_host }}/{{ ansible_user_dir }}/{{ item.src_dir}}"
+  command: "git push --mirror git+ssh://{{ ansible_user }}@{{ ansible_host }}/{{ ansible_user_dir }}/{{ item.src_dir }}"
   args:
     chdir: "{{ zuul.executor.work_root }}/{{ item.src_dir }}"
   with_items: "{{ zuul.projects }}"

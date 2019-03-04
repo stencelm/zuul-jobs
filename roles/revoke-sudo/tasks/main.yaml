@@ -1,5 +1,5 @@
 - name: Check if user is in sudoers
-  shell: 'sudo -n true'
+  command: 'sudo -n true'
   failed_when: false
   changed_when: false
   register: sudo
@@ -12,4 +12,4 @@
   when: sudo.rc == 0
 
 - name: Prove that general sudo access is actually revoked.
-  shell: '! sudo -n true'
+  command: '! sudo -n true'
